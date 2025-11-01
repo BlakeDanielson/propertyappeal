@@ -37,6 +37,23 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+
+  /* Property Appeal Brand Colors - Trust & Authority */
+  --color-brand-primary: #1e40af;        /* Deep blue - financial trust */
+  --color-brand-primary-dark: #1e3a8a;   /* Darker blue for CTAs */
+  --color-brand-primary-light: #3b82f6;  /* Lighter blue for links */
+  --color-brand-success: #059669;        /* Emerald green - savings/money */
+  --color-brand-success-light: #10b981;  /* Lighter green for positive states */
+  --color-brand-success-bg: #ecfdf5;     /* Very light green backgrounds */
+  --color-brand-accent: #7c3aed;         /* Purple - data/analytics */
+  --color-brand-accent-light: #a855f7;   /* Lighter purple for highlights */
+
+  /* Trust & Authority Text Colors */
+  --color-trust-dark: #111827;           /* Near black for headings */
+  --color-trust-secondary: #4b5563;     /* Dark gray for body text */
+  --color-trust-muted: #6b7280;         /* Medium gray for secondary info */
+  --color-trust-light: #9ca3af;         /* Light gray for captions */
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -119,4 +136,50 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Force light mode for Google Places Autocomplete Element */
+/* This overrides system dark mode preference */
+gmp-place-autocomplete {
+  --gm-fillcolor-base: white !important;
+  --gm-fillcolor-highlight: #f8f9fa !important;
+  --gm-textcolor-primary: #1f2937 !important;
+  --gm-textcolor-secondary: #6b7280 !important;
+  --gm-textcolor-tertiary: #9ca3af !important;
+  --gm-bordercolor: #e5e7eb !important;
+  --gm-bordercolor-highlight: #3b82f6 !important;
+  --gm-shadow: none !important;
+  --gm-shadow-highlight: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+  color-scheme: light !important;
+  /* Remove any default box shadow or border that might cause double overlay */
+  box-shadow: none !important;
+  border: none !important;
+  outline: none !important;
+}
+
+/* Override dark mode for autocomplete input */
+gmp-place-autocomplete::part(input) {
+  background-color: white !important;
+  color: #1f2937 !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Style the dropdown suggestions */
+gmp-place-autocomplete::part(prediction-list) {
+  background-color: white !important;
+  border-color: #e5e7eb !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Style individual prediction items */
+gmp-place-autocomplete::part(prediction) {
+  background-color: white !important;
+  color: #1f2937 !important;
+}
+
+/* Force light mode on all child elements */
+gmp-place-autocomplete * {
+  color-scheme: light !important;
 }
